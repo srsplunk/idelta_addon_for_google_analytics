@@ -53,7 +53,7 @@ def get_data_from_api(logger: logging.Logger, property_id: str, metric_names:str
     for dimListEntry in dimensions_list:
         d = Dimension(name=dimListEntry.strip())
         requestDimList.append(d)
-    logger.debug("Dimensions List: "+requestDimList)
+    logger.debug("Dimensions List: "+str(requestDimList))
     
     #Build list of Metrics for API call from the metrics input
     metrics_list=metrics_input_list.split(",")
@@ -61,7 +61,7 @@ def get_data_from_api(logger: logging.Logger, property_id: str, metric_names:str
     for metricListEntry in metrics_list:
         m = Metric(name=metricListEntry.strip())
         requestMetricList.append(m)
-    logger.debug("Metrics List: "+requestMetricList)
+    logger.debug("Metrics List: "+str(requestMetricList))
 
 
     # Using a default constructor instructs the client to use the credentials
@@ -89,14 +89,14 @@ def get_data_from_api(logger: logging.Logger, property_id: str, metric_names:str
     #Handles situation where there could be more than one dimensiom
     dimensionsNames = []
     for dimensionHeader in response.dimension_headers:
-        logger.debug("Appending dimension to list for event: "+dimensionHeader)
+        logger.debug("Appending dimension to list for event: "+str(dimensionHeader))
         dimensionsNames.append(dimensionHeader.name)
 
     #Create metric name lists for event from response.metric_headers
     #Handles situation where there could be more than one metric   
     metricNames = []
     for metricHeader in response.metric_headers:
-        logger.debug("Appending metric to list for event: "+metricHeader)
+        logger.debug("Appending metric to list for event: "+str(metricHeader))
         metricNames.append(metricHeader.name)
     logger.debug('Dimensions list: '+str(dimensionsNames))
     logger.debug('Metrics list: '+str(metricNames))
@@ -116,8 +116,8 @@ def get_data_from_api(logger: logging.Logger, property_id: str, metric_names:str
         for metric_value in row.metric_values:
             event=event+" "+metricNames[j]+"=\""+metric_value.value+"\""
             j=j+1
-        logger.debug("Processed row data: "+row)
-        logger.debug("Created event from row data: "+event)
+        logger.debug("Processed row data: "+str(row))
+        logger.debug("Created event from row data: "+str(event))
         events.append(event)
         event=""
     
