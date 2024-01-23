@@ -24,7 +24,7 @@
                             "validators": [
                                 {
                                     "type": "regex",
-                                    "errorMsg": "Account Name must begin with a letter and consist exclusively of alphanumeric characters and underscores.",
+                                    "errorMsg": "Property Name must begin with a letter and consist exclusively of alphanumeric characters and underscores.",
                                     "pattern": "^[a-zA-Z]\\w*$"
                                 },
                                 {
@@ -40,9 +40,9 @@
                         },
                         {
                             "type": "text",
-                            "label": "API key",
-                            "field": "api_key",
-                            "help": "API key",
+                            "label": "Google Analytics Property",
+                            "field": "google_analytics_property",
+                            "help": "Google Analytics Property, e.g. 392219358",
                             "required": true,
                             "encrypted": true
                         }
@@ -117,6 +117,34 @@
                         },
                         {
                             "type": "text",
+                            "label": "Metric Name(s)",
+                            "field": "metric_names",
+                            "help": "Enter single Google Analytics metric, or a comma-separated list",
+                            "required": true
+                        },
+                        {
+                            "type": "text",
+                            "label": "Dimension Name(s)",
+                            "field": "dimension_names",
+                            "help": "Enter single Google Analytics dimension, or a comma-separated list",
+                            "required": true
+                        },
+                        {
+                            "type": "text",
+                            "label": "Start Date",
+                            "field": "start_date",
+                            "help": "Enter start date using Google Analytics API allowed formats",
+                            "required": true
+                        },
+                        {
+                            "type": "text",
+                            "label": "End Date",
+                            "field": "end_date",
+                            "help": "Enter end date using Google Analytics API allowed formats",
+                            "required": true
+                        },
+                        {
+                            "type": "text",
                             "label": "Interval",
                             "validators": [
                                 {
@@ -139,6 +167,18 @@
                             "help": "Account to use for this input.",
                             "field": "account",
                             "required": true
+                        },
+                        {
+                            "field": "index",
+                            "label": "Index",
+                            "type": "singleSelect",
+                            "help": "Select the Splunk index to store the data",
+                            "required": true,
+                            "options": {
+                                "endpointUrl": "data/indexes",
+                                "createSearchChoice": true,
+                                "denyList": "^_.*$"
+                            }
                         }
                     ],
                     "title": "run_report"
@@ -157,6 +197,14 @@
                     {
                         "label": "Name",
                         "field": "name"
+                    },
+                    {
+                        "label": "Metric Names",
+                        "field": "metric_names"
+                    },
+                    {
+                        "label": "Dimension Names",
+                        "field": "dimension_names"
                     },
                     {
                         "label": "Interval",
@@ -212,8 +260,18 @@
     "meta": {
         "name": "idelta_addon_for_google_analytics",
         "restRoot": "idelta_addon_for_google_analytics",
-        "version": "0.0.1",
-        "displayName": "iDelta Add-on For Google Analytics",
-        "schemaVersion": "0.0.3"
+        "version": "0.0.28",
+        "displayName": "iDelta Add-on for Google Analytics",
+        "schemaVersion": "0.0.3",
+        "os-dependentLibraries": [
+            {
+                "name": "grpcio",
+                "version": "1.60.0",
+                "platform": "manylinux2014_x86_64",
+                "python_version": "37",
+                "os": "linux",
+                "target": "3rdparty/linux"
+            }
+        ]
     }
 }
