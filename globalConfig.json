@@ -260,7 +260,7 @@
     "meta": {
         "name": "idelta_addon_for_google_analytics",
         "restRoot": "idelta_addon_for_google_analytics",
-        "version": "0.0.0R8613d1a",
+        "version": "0.2.0R6b889de",
         "displayName": "iDelta Add-on for Google Analytics",
         "schemaVersion": "0.0.3",
         "os-dependentLibraries": [
