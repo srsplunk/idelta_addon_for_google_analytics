@@ -1,4 +1,4 @@
-import import_declare_test
+ƒimport import_declare_test
 import json
 import logging
 import sys
@@ -44,7 +44,8 @@ def get_data_from_api(logger: logging.Logger, property_id: str, metric_names:str
     os.environ['GOOGLE_APPLICATION_CREDENTIALS']=os.getenv('SPLUNK_HOME')+"/etc/apps/"+ADDON_NAME+"/bin/google_analytics_credentials.json"
     logger.debug("Current directory: "+os.getcwd())
     logger.debug("Splunk Home: "+ os.getenv('SPLUNK_HOME'))
-    logger.info("Using Google Analytics Private Key: "+os.environ['GOOGLE_APPLICATION_CREDENTIALS'])
+    #commented out so that credentials / api key never logged
+    #logger.debug("Using Google Analytics Private Key: "+os.environ['GOOGLE_APPLICATION_CREDENTIALS'])
     logger.info("Collecting data for Google Analytics propertyID: "+property_id)
    
     #Build list of Dimensions for API call from the dimensions input
