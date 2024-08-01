@@ -2,6 +2,10 @@
 
 > The iDelta Add-on for Google Analytics uses the Google Analytics Data API (GA4) to fetch and ingest it into Splunk.
 
+## Update August 2024
+The add-on is now available to download (or install directly) from [splunkbase](https://splunkbase.splunk.com/app/7472).
+Note that is has passed vetting for Splunk Cloud Victoria and Classic stacks.
+
 ## Introduction
 
 There have been various solutions over time to ingest Google Analytics data into Splunk but none had been kept up to date and there doesn't appear to be any that work with the relatively new GA4 platform.  This add-on was built to bridge that gap. 
@@ -34,8 +38,7 @@ Note that instead of using the quick start method above you can [manually create
 ### Splunk Add-on Installation
 
 To install the add-on, on the Splunk server that will host the add-on:
-1. Create a directory $SPLUNK_HOME/etc/apps/idelta_addon_for_google_analytics
-2. Copy (recursively) the contents of the package directory in this repository into that directory
+1. In Splunk Web search for the add-on and install or download from splunkbase and install manually
 3. Place the credentials.json file, supplied by the Google Analytics administrator, into the following location (note that name change on the file): $SPLUNK_HOME/etc/apps/idelta_addon_for_splunk/bin/google_analytics_credentials.json
 4. Ensure the above file has appropriate ownership and permissions set (e.g. chown splunk.splunk, chmod 400)
 5. Restart the Splunk server (or reload, requires testing)
